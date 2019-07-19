@@ -44,11 +44,8 @@ class TrainDelayFragment : Fragment() {
         //API叩く
         swipe_layout.isEnabled = false
         getTrainDelayAPI()
-
+        //検索
         setSearch()
-
-        //タイトル
-        activity?.title = "遅延情報"
 
     }
 
@@ -115,6 +112,7 @@ class TrainDelayFragment : Fragment() {
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                     if (!isLoading){
                         if (p0?.length ?: 0 > 0) {
+                            searchList.clear()
                             //配列消す
                             for (item in recyclerViewList) {
                                 if ((item as ArrayList<String>).get(1).contains(p0.toString())) {
